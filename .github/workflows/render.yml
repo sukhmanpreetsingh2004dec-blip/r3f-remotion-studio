@@ -17,7 +17,7 @@ jobs:
       - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
 
       - name: 📦 Install system dependencies
@@ -37,7 +37,7 @@ jobs:
 
       - name: 🌍 Render GlobeZoom (Pakistan Globe)
         run: |
-          npx remotion render GlobeZoom \
+          ./node_modules/.bin/remotion render GlobeZoom \
             --codec=h264 \
             --output=out/globe-zoom.mp4 \
             --log=verbose \
@@ -48,7 +48,7 @@ jobs:
 
       - name: 🌲 Render RussianForest (Drone Shot)
         run: |
-          npx remotion render RussianForest \
+          ./node_modules/.bin/remotion render RussianForest \
             --codec=h264 \
             --output=out/russian-forest.mp4 \
             --log=verbose \
