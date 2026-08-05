@@ -58,8 +58,8 @@ jobs:
 
       - name: 🎞️ Concatenate both videos into final MP4
         run: |
-          echo "file 'out/globe-zoom.mp4'" > out/concat.txt
-          echo "file 'out/russian-forest.mp4'" >> out/concat.txt
+          echo "file 'globe-zoom.mp4'" > out/concat.txt
+          echo "file 'russian-forest.mp4'" >> out/concat.txt
           ffmpeg -f concat -safe 0 -i out/concat.txt -c copy out/final-output.mp4
 
       - name: ⬆️ Upload final video artifact
