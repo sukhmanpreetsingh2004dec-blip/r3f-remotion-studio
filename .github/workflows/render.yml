@@ -41,7 +41,7 @@ jobs:
             --codec=h264 \
             --output=out/globe-zoom.mp4 \
             --log=verbose \
-            --gl=angle \
+            --gl=swangle \
             --browser-executable=$(which chromium-browser)
         env:
           DISPLAY: ':99'
@@ -53,7 +53,7 @@ jobs:
             --codec=h264 \
             --output=out/russian-forest.mp4 \
             --log=verbose \
-            --gl=angle \
+            --gl=swangle \
             --browser-executable=$(which chromium-browser)
         env:
           DISPLAY: ':99'
