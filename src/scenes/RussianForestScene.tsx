@@ -4,7 +4,7 @@ import { easeOut, easeInOut } from '../utils/animation';
 import { interpolate } from 'remotion';
 
 // ─── Constants ────────────────────────────────────────────────────────────────
-const TREE_COUNT = 280;
+const TREE_COUNT = 80;
 const CAR_COUNT = 5;
 const ROAD_LENGTH = 80;
 const ROAD_WIDTH = 3.5;
