@@ -1,0 +1,32 @@
+{
+  "name": "r3f-remotion-studio",
+  "version": "1.0.0",
+  "description": "Production-ready React Three Fiber + Remotion 3D video pipeline",
+  "private": true,
+  "scripts": {
+    "start": "npx remotion studio",
+    "build": "npx remotion render GlobeZoom --codec=h264 --output=out/output.mp4",
+    "preview": "npx remotion studio",
+    "still": "npx remotion still GlobeZoom --frame=30 --output=out/preview.png",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@react-three/drei": "^9.115.0",
+    "@react-three/fiber": "^8.18.0",
+    "@remotion/three": "^4.0.290",
+    "gsap": "^3.12.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.290",
+    "three": "^0.172.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.1",
+    "@types/three": "^0.172.0",
+    "typescript": "^5.4.5"
+  },
+  "remotion": {
+    "entryPoint": "./src/index.ts"
+  }
+}

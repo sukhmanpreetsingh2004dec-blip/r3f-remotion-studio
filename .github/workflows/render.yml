@@ -1,0 +1,62 @@
+name: 🎬 Render 3D Video
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  render:
+    name: Render MP4 on Ubuntu
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout source code
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      # 2. Setup Node.js LTS
+      - name: ⚙️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      # 3. Install system dependencies for headless Chrome + FFmpeg
+      - name: 📦 Install system dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq \
+            ffmpeg \
+            chromium-browser \
+            libgbm-dev \
+            xvfb
+
+      # 4. Install npm dependencies
+      - name: 📦 Install npm dependencies
+        run: npm ci
+
+      # 5. Create output directory
+      - name: 📁 Create output directory
+        run: mkdir -p out
+
+      # 6. Render video via Remotion (headless Chrome inside Xvfb)
+      - name: 🎬 Render video
+        run: |
+          npx remotion render GlobeZoom \
+            --codec=h264 \
+            --output=out/output.mp4 \
+            --log=verbose \
+            --browser-executable=$(which chromium-browser)
+        env:
+          DISPLAY: ':99'
+          NODE_OPTIONS: '--max-old-space-size=4096'
+
+      # 7. Upload rendered MP4 as artifact
+      - name: ⬆️ Upload video artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: rendered-video
+          path: out/output.mp4
+          retention-days: 14
+          if-no-files-found: error
