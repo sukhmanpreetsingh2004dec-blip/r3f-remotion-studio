@@ -13,15 +13,15 @@
   "dependencies": {
     "@react-three/drei": "^9.115.0",
     "@react-three/fiber": "^8.18.0",
-    "@remotion/three": "^4.0.290",
+    "@remotion/three": "4.0.290",
     "gsap": "^3.12.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "remotion": "^4.0.290",
+    "remotion": "4.0.290",
     "three": "^0.172.0"
   },
   "devDependencies": {
-    "@remotion/cli": "^4.0.290",
+    "@remotion/cli": "4.0.290",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.1",
     "@types/three": "^0.172.0",
