@@ -25,7 +25,6 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y -qq \
             ffmpeg \
-            chromium-browser \
             libgbm-dev \
             xvfb
 
@@ -37,24 +36,22 @@ jobs:
 
       - name: 🌍 Render GlobeZoom (Pakistan Globe)
         run: |
-          npx remotion render GlobeZoom \
+          xvfb-run --auto-servernum npx remotion render GlobeZoom \
             --codec=h264 \
             --output=out/globe-zoom.mp4 \
             --log=verbose \
-            --gl=swangle \
-            --browser-executable=$(which chromium-browser)
+            --gl=swangle
         env:
           DISPLAY: ':99'
           NODE_OPTIONS: '--max-old-space-size=4096'
 
       - name: 🌲 Render RussianForest (Drone Shot)
         run: |
-          npx remotion render RussianForest \
+          xvfb-run --auto-servernum npx remotion render RussianForest \
             --codec=h264 \
             --output=out/russian-forest.mp4 \
             --log=verbose \
-            --gl=swangle \
-            --browser-executable=$(which chromium-browser)
+            --gl=swangle
         env:
           DISPLAY: ':99'
           NODE_OPTIONS: '--max-old-space-size=4096'
